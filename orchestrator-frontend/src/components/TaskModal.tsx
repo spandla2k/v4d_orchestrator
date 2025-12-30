@@ -55,7 +55,7 @@ const TaskModal = ({ open, onClose, onSubmit, parentTask }: TaskModalProps) => {
           <label className="block text-sm font-medium mb-1">Run At</label>
           <input type="datetime-local" value={scheduledFor} onChange={(e) => setScheduledFor(e.target.value)} className="w-full p-2 border rounded" required></input>
         </div>
-        <button onClick={() => onSubmit({ name, prompt, scheduledFor: scheduledFor || new Date().toISOString(), parent_id: parentTask?.id })} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+        <button onClick={() => onSubmit({ name, prompt, scheduledFor: scheduledFor ? new Date(scheduledFor).toISOString() : new Date().toISOString(), parent_id: parentTask?.id })} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
           Create Task
         </button>
       </div>
