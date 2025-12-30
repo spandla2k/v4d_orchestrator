@@ -48,6 +48,7 @@ const TaskList = ({ tasks, onCreateChildTask }: TaskListProps) => {
           <p className="text-sm text-gray-500">Created At: {new Date(task.created_at).toLocaleString()}</p>
           {task.scheduled_time && <p className="text-sm text-gray-500">Scheduled For: {new Date(task.scheduled_time).toLocaleString()}</p>}
           <p className="text-sm text-gray-500">Result: {task.result || "N/A"}</p>
+          <p className="text-sm text-gray-500">Finished At: {task.finished_at ? new Date(task.finished_at).toLocaleString() : "N/A"}</p>
           <button onClick={() => onCreateChildTask(task)} className="mt-2 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
             Use Output as New Task Input
           </button>
