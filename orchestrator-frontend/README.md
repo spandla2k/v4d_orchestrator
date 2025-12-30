@@ -1,16 +1,49 @@
-# React + Vite
+## Run locally
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Vinci4D Orchestrator
 
-Currently, two official plugins are available:
+Task orchestration system built with:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- FastAPI
+- Celery
+- Redis
+- Postgres
+- React
+- Docker
 
-## React Compiler
+## Quick Start
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Requirements:
 
-## Expanding the ESLint configuration
+- Docker
+- Docker Compose
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone <repo>
+cd v4d_orchestrator
+cp .env.example .env
+#Edit .env and add your OpenAI API key (optional):
+docker compose up --build
+docker compose up --build
+
+
+
+Frontend: http://localhost:5174
+API docs: http://localhost:8000/docs
+
+Example: Chained Tasks
+taks1: Prompt: Create a morse code for the following: "Come Home Soon"
+taks2 [taks1 output]:  Prompt: Convert the morse code into text
+
+
+Notes:
+
+If OPENAI_API_KEY is not set, the system will fall back to a mock LLM response (for local development).
+
+Redis is used as the Celery broker and result backend.
+
+PostgreSQL is used for task persistence.
+
+Celery workers and beat scheduler are started automatically via Docker Compose.
+
+```
