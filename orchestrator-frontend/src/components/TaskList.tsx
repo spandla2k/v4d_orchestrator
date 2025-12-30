@@ -41,7 +41,7 @@ const TaskList = ({ tasks, onCreateChildTask }: TaskListProps) => {
     <div className="max-w-2xl mx-auto mt-8 ">
       <h2 className="text-xl font-bold mb-4">Task List</h2>
       {tasks.map((task) => (
-        <div key={task.id} className={`p-4 border rounded shadow-md rounded-xl p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10 mb-4 ${statusStyles[task.status]}`}>
+        <div key={task.id} className={`p-4 border rounded shadow-md rounded-xl p-6 shadow-lg outline outline-black/5  mb-4 ${statusStyles[task.status]}`}>
           <h4 className="text-lg font-semibold">{task.name}</h4>
           <p className="text-gray-700">{task.prompt}</p>
           <p className="text-sm text-gray-500">Status: {task.status}</p>
